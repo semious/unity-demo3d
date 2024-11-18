@@ -5,6 +5,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+
     private float movementX;
     private float movementY;
 
@@ -19,13 +20,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
-    }
-
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
     }
 
     private void FixedUpdate()
@@ -50,5 +44,14 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
+
+    }
+
+    void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+        // Debug.Log(movementVector);
+        movementX = movementVector.x;
+        movementY = movementVector.y;
     }
 }
